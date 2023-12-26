@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Logo from './logo.svg';
+import Logo1 from './logo512.png';
 
-function App() {
+const EmployeeForm = () => {
+  // Daftar karyawan beserta informasi mereka
+  const employees = [
+    { id: 1, name: 'John Doe', photo: Logo },
+    { id: 2, name: 'Jane Smith', photo: Logo1 },
+    // Tambahkan karyawan lain di sini
+  ];
+
+  const [currentEmployee, setCurrentEmployee] = useState(employees[0]); // Karyawan awal yang ditampilkan
+
+  const changeEmployee = (employee) => {
+    setCurrentEmployee(employee);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="employee-card">
+        <img src={currentEmployee.photo} alt={currentEmployee.name} />
+        <h2>{currentEmployee.name}</h2>
+      </div>
+      <div className="button-container">
+        {employees.map((employee) => (
+          <button key={employee.id} onClick={() => changeEmployee(employee)}>
+            {employee.name}
+          </button>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default EmployeeForm;
