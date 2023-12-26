@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Logo from './logo.svg';
 import Logo1 from './logo512.png';
+import Logo1 from './logo512.png';
 
 const EmployeeForm = () => {
   // Daftar karyawan beserta informasi mereka
